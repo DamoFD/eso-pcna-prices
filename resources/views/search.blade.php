@@ -10,7 +10,9 @@
     <body class="relative w-full">
         <main class="w-full flex flex-col items-center justify-center pt-12">
 
-            <h1 class="text-4xl font-extrabold text-[#d8ae3a]">ESO PSNA Prices</h1>
+            <a href="/">
+                <h1 class="text-4xl font-extrabold text-[#d8ae3a]">ESO PSNA Prices</h1>
+            </a>
 
             {{-- Search !--}}
             <form class="flex mt-10" action="{{ route('search') }}" method="GET">
@@ -19,7 +21,7 @@
             </form>
             {{-- /Search !--}}
 
-            <h2 class="text-2xl font-extrabold text-[#d8ae3a] mt-10">Trending</h2>
+            <h2 class="text-2xl font-extrabold text-[#d8ae3a] mt-10">Results</h2>
 
             <div class="flex flex-col space-y-4 w-11/12 mt-4 overflow-y-auto pb-10">
                 @if ($items->isNotEmpty())

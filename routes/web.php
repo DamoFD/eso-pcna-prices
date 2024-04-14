@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ItemController::class, 'index'])->name('home');
 
+Route::get('/item/create', [ItemController::class, 'create'])->name('create');
+
+Route::post('/item/create', [ItemController::class, 'store'])->name('store');
+
 Route::get('/item/{id}', [ItemController::class, 'show'])->name('show');
 
 Route::get('/welcome', function () {

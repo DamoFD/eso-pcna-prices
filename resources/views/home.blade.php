@@ -10,7 +10,9 @@
     <body class="relative w-full">
         <main class="w-full flex flex-col items-center justify-center pt-12">
 
-            <h1 class="text-4xl font-extrabold text-[#d8ae3a]">ESO PSNA Prices</h1>
+            <a href="/">
+                <h1 class="text-4xl font-extrabold text-[#d8ae3a]">ESO PSNA Prices</h1>
+            </a>
 
             {{-- Search !--}}
             <form class="flex mt-10" action="{{ route('search') }}" method="GET">

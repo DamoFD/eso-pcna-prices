@@ -83,4 +83,14 @@ class ItemController extends Controller
 
             return view('search', compact('items'));
         }
+
+    public function create()
+    {
+        return view('create');
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->name);
+    }
 }
