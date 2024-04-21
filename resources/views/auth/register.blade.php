@@ -16,6 +16,13 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- Developer Account? -->
+        <div class="mt-4">
+            <label for="developer">Developer?</label>
+            <input id="developer" class="block mt-1" type="checkbox" name="developer" value="1" :value="old('developer') ? 'checked' : ''" />
+            <x-input-error :messages="$errors->get('developer')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
