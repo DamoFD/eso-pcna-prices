@@ -23,62 +23,72 @@
 
             <h2 class="text-2xl font-extrabold text-[#d8ae3a] mt-10">Create an Item</h2>
 
+            @if ($errors->any())
+                <div class="text-red-500">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action="{{ route('store') }}" method="POST" class="flex flex-col space-y-4 w-11/12 mt-4 pb-10">
                 @csrf
                 <div class="flex flex-col">
                     <label for="name" class="text-[#d8ae3a] text-lg font-bold">Item Name</label>
-                    <input id="name" name="name" type="text" placeholder="ex: Dreugh Wax" class="h-10 block rounded-lg bg-slate-700 text-[#d8ae3a]" />
+                    <input value="{{ old('name') }}" id="name" name="name" type="text" placeholder="ex: Dreugh Wax" class="h-10 block rounded-lg bg-slate-700 text-[#d8ae3a]" />
                 </div>
                 <div class="flex flex-col">
                     <label for="trait" class="text-[#d8ae3a] text-lg font-bold">Trait</label>
-                    <select id="trait" name="trait" class="h-10 block rounded-lg bg-slate-700 text-[#d8ae3a]">
+                    <select name="trait" class="h-10 block rounded-lg bg-slate-700 text-[#d8ae3a]">
                         <option value="">None</option>
-                        <option value="1">Aggressive</option>
-                        <option value="2">Arcane</option>
-                        <option value="3">Augmented</option>
-                        <option value="4">Bloodthirsty</option>
-                        <option value="5">Bolstered</option>
-                        <option value="6">Charged</option>
-                        <option value="7">Decisive</option>
-                        <option value="8">Defending</option>
-                        <option value="9">Divines</option>
-                        <option value="10">Focused</option>
-                        <option value="11">Harmony</option>
-                        <option value="12">Healthy</option>
-                        <option value="13">Impenetrable</option>
-                        <option value="14">Infused</option>
-                        <option value="15">Infused</option>
-                        <option value="16">Infused</option>
-                        <option value="17">Intricate</option>
-                        <option value="18">Invigorating</option>
-                        <option value="19">Nirnhoned</option>
-                        <option value="20">Nirnhoned</option>
-                        <option value="21">Ornate</option>
-                        <option value="22">Powered</option>
-                        <option value="23">Prolific</option>
-                        <option value="24">Protective</option>
-                        <option value="25">Quickened</option>
-                        <option value="26">Reinforced</option>
-                        <option value="27">Robust</option>
-                        <option value="28">Shattering</option>
-                        <option value="29">Sharpened</option>
-                        <option value="30">Soothing</option>
-                        <option value="31">Sturdy</option>
-                        <option value="32">Swift</option>
-                        <option value="33">Training</option>
-                        <option value="34">Triune</option>
-                        <option value="35">Vigorous</option>
-                        <option value="36">Well-fitted</option>
+                        <option value="1" {{ old('trait') == '1' ? 'selected' : '' }}>Aggressive</option>
+                        <option value="2" {{ old('trait') == '2' ? 'selected' : '' }}>Arcane</option>
+                        <option value="3" {{ old('trait') == '3' ? 'selected' : '' }}>Augmented</option>
+                        <option value="4" {{ old('trait') == '4' ? 'selected' : '' }}>Bloodthirsty</option>
+                        <option value="5" {{ old('trait') == '5' ? 'selected' : '' }}>Bolstered</option>
+                        <option value="6" {{ old('trait') == '6' ? 'selected' : '' }}>Charged</option>
+                        <option value="7" {{ old('trait') == '7' ? 'selected' : '' }}>Decisive</option>
+                        <option value="8" {{ old('trait') == '8' ? 'selected' : '' }}>Defending</option>
+                        <option value="9" {{ old('trait') == '9' ? 'selected' : '' }}>Divines</option>
+                        <option value="10" {{ old('trait') == '10' ? 'selected' : '' }}>Focused</option>
+                        <option value="11" {{ old('trait') == '11' ? 'selected' : '' }}>Harmony</option>
+                        <option value="12" {{ old('trait') == '12' ? 'selected' : '' }}>Healthy</option>
+                        <option value="13" {{ old('trait') == '13' ? 'selected' : '' }}>Impenetrable</option>
+                        <option value="14" {{ old('trait') == '14' ? 'selected' : '' }}>Infused</option>
+                        <option value="15" {{ old('trait') == '15' ? 'selected' : '' }}>Infused</option>
+                        <option value="16" {{ old('trait') == '16' ? 'selected' : '' }}>Infused</option>
+                        <option value="17" {{ old('trait') == '17' ? 'selected' : '' }}>Intricate</option>
+                        <option value="18" {{ old('trait') == '18' ? 'selected' : '' }}>Invigorating</option>
+                        <option value="19" {{ old('trait') == '19' ? 'selected' : '' }}>Nirnhoned</option>
+                        <option value="20" {{ old('trait') == '20' ? 'selected' : '' }}>Nirnhoned</option>
+                        <option value="21" {{ old('trait') == '21' ? 'selected' : '' }}>Ornate</option>
+                        <option value="22" {{ old('trait') == '22' ? 'selected' : '' }}>Powered</option>
+                        <option value="23" {{ old('trait') == '23' ? 'selected' : '' }}>Prolific</option>
+                        <option value="24" {{ old('trait') == '24' ? 'selected' : '' }}>Protective</option>
+                        <option value="25" {{ old('trait') == '25' ? 'selected' : '' }}>Quickened</option>
+                        <option value="26" {{ old('trait') == '26' ? 'selected' : '' }}>Reinforced</option>
+                        <option value="27" {{ old('trait') == '27' ? 'selected' : '' }}>Robust</option>
+                        <option value="28" {{ old('trait') == '28' ? 'selected' : '' }}>Shattering</option>
+                        <option value="29" {{ old('trait') == '29' ? 'selected' : '' }}>Sharpened</option>
+                        <option value="30" {{ old('trait') == '30' ? 'selected' : '' }}>Soothing</option>
+                        <option value="31" {{ old('trait') == '31' ? 'selected' : '' }}>Sturdy</option>
+                        <option value="32" {{ old('trait') == '32' ? 'selected' : '' }}>Swift</option>
+                        <option value="33" {{ old('trait') == '33' ? 'selected' : '' }}>Training</option>
+                        <option value="34" {{ old('trait') == '34' ? 'selected' : '' }}>Triune</option>
+                        <option value="35" {{ old('trait') == '35' ? 'selected' : '' }}>Vigorous</option>
+                        <option value="36" {{ old('trait') == '36' ? 'selected' : '' }}>Well-fitted</option>
                     </select>
                 </div>
                 <div class="flex flex-col">
                     <label for="quality" class="text-[#d8ae3a] text-lg font-bold">Quality</label>
                     <select id="quality" name="quality" class="h-10 block rounded-lg bg-slate-700 text-[#d8ae3a]">
-                        <option value="1">Normal</option>
-                        <option value="2">Fine</option>
-                        <option value="3">Superior</option>
-                        <option value="4">Epic</option>
-                        <option value="5">Legendary</option>
+                        <option value="1" {{ old('quality') == '1' ? 'selected' : '' }}>Normal</option>
+                        <option value="2" {{ old('quality') == '2' ? 'selected' : '' }}>Fine</option>
+                        <option value="3" {{ old('quality') == '3' ? 'selected' : '' }}>Superior</option>
+                        <option value="4" {{ old('quality') == '4' ? 'selected' : '' }}>Epic</option>
+                        <option value="5" {{ old('quality') == '5' ? 'selected' : '' }}>Legendary</option>
                     </select>
                 </div>
                 <div class="w-full pt-10">

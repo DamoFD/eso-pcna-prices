@@ -91,6 +91,19 @@ class ItemController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->name);
+        $validatedData = $request->validate([
+            'name' => 'required|string|unique:items',
+            'trait' => 'nullable|integer|min:0|max:36',
+            'quality' => 'required|integer|min:1|max:5'
+        ]);
+
+        $item = new Item();
+        $item->user_id = auth()->user()->id;
+        $item->name = $validatedData['name'];
+        $item->trait = $validatedData['trait'];
+        $item->quality = $validatedData['quality'];
+        $item->save();
+
+        return redirect()->route('show', ['id' => $item->id]);
     }
 }
