@@ -12,6 +12,10 @@ Route::post('/item/create', [ItemController::class, 'store'])->name('store');
 
 Route::get('/item/{id}', [ItemController::class, 'show'])->name('show');
 
+Route::get('/item/{id}/edit', [ItemController::class, 'edit'])->name('edit');
+
+Route::put('/item/{id}', [ItemController::class, 'update'])->name('update');
+
 Route::get('/welcome', function () {
     return view('welcome');
 });

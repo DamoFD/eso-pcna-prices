@@ -106,4 +106,28 @@ class ItemController extends Controller
 
         return redirect()->route('show', ['id' => $item->id]);
     }
+
+    public function edit($id)
+    {
+        $item = Item::where('id', $id)->first();
+        return view('edit', compact('item'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|unique:items,name,' . $id,
+            'trait' => 'nullable|integer|min:0|max:36',
+            'quality' => 'required|integer|min:1|max:5'
+        ]);
+
+        $item = Item::findOrFail($id);
+        $item->user_id = auth()->user()->id;
+        $item->name = $validatedData['name'];
+        $item->trait = $validatedData['trait'];
+        $item->quality = $validatedData['quality'];
+        $item->save();
+
+        return redirect()->route('show', ['id' => $item->id]);
+    }
 }
