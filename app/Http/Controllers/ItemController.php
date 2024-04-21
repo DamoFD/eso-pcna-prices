@@ -87,11 +87,19 @@ class ItemController extends Controller
 
     public function create()
     {
+        if (auth()->user()->developer != 1) {
+            return redirect()->route('home');
+        }
+
         return view('create');
     }
 
     public function store(Request $request)
     {
+        if (auth()->user()->developer != 1) {
+            return redirect()->route('home');
+        }
+
         $validatedData = $request->validate([
             'name' => 'required|string|unique:items',
             'trait' => 'nullable|integer|min:0|max:36',
@@ -110,12 +118,20 @@ class ItemController extends Controller
 
     public function edit($id)
     {
+        if (auth()->user()->developer != 1) {
+            return redirect()->route('home');
+        }
+
         $item = Item::where('id', $id)->first();
         return view('edit', compact('item'));
     }
 
     public function update(Request $request, $id)
     {
+        if (auth()->user()->developer != 1) {
+            return redirect()->route('home');
+        }
+
         $validatedData = $request->validate([
             'name' => 'required|string|unique:items,name,' . $id,
             'trait' => 'nullable|integer|min:0|max:36',
@@ -134,12 +150,20 @@ class ItemController extends Controller
 
     public function addPrice($id)
     {
+        if (auth()->user()->developer != 1) {
+            return redirect()->route('home');
+        }
+
         $item = Item::where('id', $id)->first();
         return view('add-price', compact('item'));
     }
 
     public function storePrice(Request $request, $id)
     {
+        if (auth()->user()->developer != 1) {
+            return redirect()->route('home');
+        }
+
         $validatedData = $request->validate([
             'price' => 'required|integer|min:1|max:10000000000'
         ]);
