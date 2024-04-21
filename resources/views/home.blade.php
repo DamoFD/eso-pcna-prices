@@ -9,6 +9,7 @@
     </head>
     <body class="relative w-full">
         <main class="w-full flex flex-col items-center justify-center pt-12">
+            <p class="text-white">Welcome {{ auth()->user()->name }}</p>
 
             <a href="/">
                 <h1 class="text-4xl font-extrabold text-[#d8ae3a]">ESO PSNA Prices</h1>

@@ -31,6 +31,8 @@ class ItemController extends Controller
             return abs($b->percentDifference) <=> abs($a->percentDifference);
         });
 
+        $items = $items->take(20);
+
         return view('home', compact('items'));
     }
 
