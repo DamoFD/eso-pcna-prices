@@ -29,7 +29,10 @@
                         <x-card :item="$item" />
                     @endforeach
                 @endif
-                    <p class="text-center text-gray-200 font-bold text-lg">Couldn't find what you were looking for? Add an item!</p>
+                    <p class="text-center text-gray-200 font-bold text-lg">Couldn't find what you were looking for? Notify a developer!</p>
+                    @if (auth()->user()->developer == 1)
+                        <a href="{{ route('create') }}" class="text-white">Create Item</a>
+                    @endif
             </div>
 
         </main>
