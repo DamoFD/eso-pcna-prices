@@ -21,7 +21,7 @@
             </form>
             {{-- /Search !--}}
 
-            <h2 class="text-2xl font-extrabold text-[#d8ae3a] mt-10">Create an Item</h2>
+            <h2 class="text-2xl font-extrabold text-[#d8ae3a] mt-10">Editing {{ $item->name }}</h2>
 
             @if ($errors->any())
                 <div class="text-red-500">

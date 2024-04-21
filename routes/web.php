@@ -16,6 +16,10 @@ Route::get('/item/{id}/edit', [ItemController::class, 'edit'])->name('edit');
 
 Route::put('/item/{id}', [ItemController::class, 'update'])->name('update');
 
+Route::get('/item/{id}/add-price', [ItemController::class, 'addPrice'])->name('add.price');
+
+Route::post('/item/{id}/add-price', [ItemController::class, 'storePrice'])->name('store.price');
+
 Route::get('/welcome', function () {
     return view('welcome');
 });

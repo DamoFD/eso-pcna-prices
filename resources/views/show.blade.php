@@ -69,7 +69,17 @@
                 </div>
             </div>
 
+            @if (auth()->user()->developer == 1)
+                <div>
+                    <a href="{{ route('add.price', ['id' => $item->id]) }}" class="text-white">Add Price</a>
+                </div>
+            @endif
+
             <div id="curve_chart" style="width: 300px; height: 300px"></div>
+
+            @if (auth()->user()->developer == 1)
+                <a href="{{ route('edit', ['id' => $item->id]) }}" class="text-white">Edit Item</a>
+            @endif
 
         </main>
 

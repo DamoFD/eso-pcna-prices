@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\Price;
 
 class ItemController extends Controller
 {
@@ -129,5 +130,26 @@ class ItemController extends Controller
         $item->save();
 
         return redirect()->route('show', ['id' => $item->id]);
+    }
+
+    public function addPrice($id)
+    {
+        $item = Item::where('id', $id)->first();
+        return view('add-price', compact('item'));
+    }
+
+    public function storePrice(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'price' => 'required|integer|min:1|max:10000000000'
+        ]);
+
+        $price = new Price();
+        $price->user_id = auth()->user()->id;
+        $price->price = $validatedData['price'];
+        $price->item_id = $id;
+        $price->save();
+
+        return redirect()->route('show', ['id' => $id]);
     }
 }
