@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>The Cooking Guild PSNA Prices</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
@@ -41,7 +41,18 @@
     </script>
     </head>
     <body class="relative w-full">
+
+        <header class="fixed top-0 left-0 w-full py-2 px-2 flex justify-between bg-gradient-to-b from-black to-[rgba(0,0,0,0.1)]">
+                <a href="{{ route('home') }}" class="text-[#d8ae3a] font-extrabold">The Cooking Guild</a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="block text-white font-bold">Logout</button>
+            </form>
+        </header>
+
         <main class="w-full flex flex-col items-center justify-center pt-12">
+
+            <p class="text-white font-bold">Welcome {{ auth()->user()->name }}</p>
 
             <a href="/">
                 <h1 class="text-4xl font-extrabold text-[#d8ae3a]">ESO PSNA Prices</h1>

@@ -6,25 +6,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::middleware('auth')->group(function () {
-
     Route::get('/', [ItemController::class, 'index'])->name('home');
-
     Route::get('/item/create', [ItemController::class, 'create'])->name('create');
-
     Route::post('/item/create', [ItemController::class, 'store'])->name('store');
-
     Route::get('/item/{id}', [ItemController::class, 'show'])->name('show');
-
     Route::get('/item/{id}/edit', [ItemController::class, 'edit'])->name('edit');
-
     Route::put('/item/{id}', [ItemController::class, 'update'])->name('update');
-
     Route::get('/item/{id}/add-price', [ItemController::class, 'addPrice'])->name('add.price');
-
     Route::post('/item/{id}/add-price', [ItemController::class, 'storePrice'])->name('store.price');
-
     Route::get('/search', [ItemController::class, 'search'])->name('search');
-
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');

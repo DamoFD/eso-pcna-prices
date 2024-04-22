@@ -19,6 +19,10 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
+        if (auth()->user()->developer != 1) {
+            return redirect()->route('home');
+        }
+
         return view('auth.register');
     }
 
