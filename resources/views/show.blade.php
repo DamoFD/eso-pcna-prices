@@ -95,7 +95,7 @@
                     @else
                         <p class="text-white">Price change data not available</p>
                     @endif
-                    <h3 class="text-center text-white font-bold">Last updated: {{ $item->prices->first()->last_updated ?? 'Not available' }}</h3>
+                    <h3 class="text-center text-white font-bold">Last updated: {{ optional($item->prices->first())->updated_at?->diffForHumans() ?? 'Not available' }}</h3>
                 </div>
             </div>
 
