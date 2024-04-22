@@ -40,7 +40,7 @@
                 @endif
                     <p class="text-center text-gray-200 font-bold text-lg">Couldn't find what you were looking for? Notify a developer!</p>
                     @if (auth()->user()->developer == 1)
-                        <a href="{{ route('create') }}" class="text-white">Create Item</a>
+                        <a href="{{ route('create') }}" class="text-slate-800 font-extrabold bg-[#d8ae3a] rounded-lg px-4 py-2 text-center">Create Item</a>
                     @endif
             </div>
 

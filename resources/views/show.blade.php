@@ -65,7 +65,25 @@
             </form>
             {{-- /Search !--}}
 
-            <h2 class="text-2xl font-extrabold text-[#d8ae3a] mt-10">{{ $item->name }}</h2>
+            <h2 class="text-2xl font-extrabold mt-10" style="color: @switch($item->quality)
+                @case(1)
+                    #FFFFFF; {{-- White for Normal --}}
+                    @break
+                @case(2)
+                    #2DC50E; {{-- Green for Fine --}}
+                    @break
+                @case(3)
+                    #3A92FF; {{-- Blue for Superior --}}
+                    @break
+                @case(4)
+                    #A02EF7; {{-- Purple for Epic --}}
+                    @break
+                @case(5)
+                    #FFAA1A; {{-- Gold for Legendary --}}
+                    @break
+                @default
+                    #FFFFFF; {{-- Default color if none of the above --}}
+            @endswitch">{{ $item->name }}</h2>
 
             <div class="flex flex-col space-y-4 w-11/12 mt-4 overflow-y-auto pb-10">
                 <div class="bg-slate-700 w-full h-24 flex flex-col items-center justify-center shadow-md shadow-slate-600 rounded-lg">
@@ -77,19 +95,20 @@
                     @else
                         <p class="text-white">Price change data not available</p>
                     @endif
+                    <h3 class="text-center text-white font-bold">Last updated: {{ $item->prices->first()->last_updated ?? 'Not available' }}</h3>
                 </div>
             </div>
 
             @if (auth()->user()->developer == 1)
                 <div>
-                    <a href="{{ route('add.price', ['id' => $item->id]) }}" class="text-white">Add Price</a>
+                    <a href="{{ route('add.price', ['id' => $item->id]) }}" class="text-slate-800 font-extrabold bg-[#d8ae3a] rounded-lg px-4 py-2">Add Price</a>
                 </div>
             @endif
 
-            <div id="curve_chart" style="width: 300px; height: 300px"></div>
+            <div id="curve_chart" style="width: 300px; height: 300px" class="my-10"></div>
 
             @if (auth()->user()->developer == 1)
-                <a href="{{ route('edit', ['id' => $item->id]) }}" class="text-white">Edit Item</a>
+                <a href="{{ route('edit', ['id' => $item->id]) }}" class="text-slate-800 font-extrabold bg-[#d8ae3a] rounded-lg px-4 py-2">Edit Item</a>
             @endif
 
         </main>
